@@ -1,36 +1,26 @@
 {
-  "name": "@downzoo/common-cli",
+  "name": "@downzoo/command",
   "version": "0.0.0",
-  "description": "common Node.js cli",
+  "description": "command class",
   "author": "朱建业 <borisdunk@sina.com>",
   "homepage": "https://github.com/maidangzhu/common-cli#readme",
   "license": "ISC",
-  "main": "bin/cli.js",
-  "bin": {
-    "common-cli": "bin/cli.js"
-  },
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib",
-    "bin"
+    "lib"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maidangzhu/common-cli.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "node ./__tests__/command.test.js"
   },
   "bugs": {
     "url": "https://github.com/maidangzhu/common-cli/issues"
-  },
-  "dependencies": {
-    "@downzoo/init": "^0.0.0",
-    "commander": "^10.0.1",
-    "import-local": "^3.1.0",
-    "npmlog": "^7.0.1"
   }
 }
