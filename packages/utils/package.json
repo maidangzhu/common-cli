@@ -1,7 +1,7 @@
 {
-  "name": "@downzoo/init",
+  "name": "@downzoo/utils",
   "version": "0.0.0",
-  "description": "init command",
+  "description": "common-cli utils",
   "author": "朱建业 <borisdunk@sina.com>",
   "homepage": "https://github.com/maidangzhu/common-cli#readme",
   "license": "ISC",
@@ -19,14 +19,13 @@
     "url": "git+https://github.com/maidangzhu/common-cli.git"
   },
   "scripts": {
-    "test": "node ./__tests__/init.test.js"
+    "test": "node ./__tests__/utils.test.js"
   },
   "bugs": {
     "url": "https://github.com/maidangzhu/common-cli/issues"
   },
   "dependencies": {
-    "@downzoo/command": "^0.0.0",
-    "@downzoo/utils": "^0.0.0",
-    "dirname-filename-esm": "^1.1.1"
+    "dirname-filename-esm": "^1.1.1",
+    "npmlog": "^7.0.1"
   }
 }

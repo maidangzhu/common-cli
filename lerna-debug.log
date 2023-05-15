@@ -1,0 +1,16 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   globs: [ 'packages/cli' ],
+0 silly argv   lernaVersion: '5.6.2',
+0 silly argv   '$0': 'node_modules/lerna/cli.js',
+0 silly argv   pkg: 'semver'
+0 silly argv }
+1 notice cli v5.6.2
+2 verbose rootPath /Users/zhujianye/downzoo/common-cli
+3 error FetchError: request to https://registry.npmjs.org/semver failed, reason: connect ETIMEDOUT 104.16.21.35:443
+3 error     at ClientRequest.<anonymous> (/Users/zhujianye/downzoo/common-cli/node_modules/.pnpm/minipass-fetch@2.1.2/node_modules/minipass-fetch/lib/index.js:130:14)
+3 error     at ClientRequest.emit (node:events:513:28)
+3 error     at TLSSocket.socketErrorListener (node:_http_client:494:9)
+3 error     at TLSSocket.emit (node:events:525:35)
+3 error     at emitErrorNT (node:internal/streams/destroy:157:8)
+3 error     at emitErrorCloseNT (node:internal/streams/destroy:122:3)

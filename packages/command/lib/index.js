@@ -11,12 +11,8 @@ class Command {
 
 		const cmd = this.program.command(this.command)
 		cmd.description(this.description)
-		cmd.hook('preAction', () => {
-			this.preAction()
-		})
-		cmd.hook('postAction', () => {
-			this.postAction()
-		})
+		cmd.hook('preAction', this.preAction)
+		cmd.hook('postAction', this.postAction)
 		if (this.options?.length > 0) {
 			this.options.forEach((option) => {
 				cmd.option(...option)
@@ -58,4 +54,4 @@ class Command {
 }
 
 
-module.exports = Command
+export default Command

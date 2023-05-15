@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 
-const importLocal = require('import-local')
-const log = require('npmlog')
-const entry = require('../lib/index')
+import importLocal from 'import-local'
+import { log } from '@downzoo/utils'
+import entry from '../lib/index.js'
+import { filename } from 'dirname-filename-esm';
+
+const __filename = filename(import.meta);
 
 if (importLocal(__filename)) {
-  log.info('cli', '使用本地 common-cli 版本')
+	log.info('cli', '使用本地 common-cli 版本')
 } else {
-  entry(process.argv.slice(2))
+	entry(process.argv.slice(2))
 }

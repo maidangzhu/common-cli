@@ -1,4 +1,5 @@
-const Command = require('@downzoo/command')
+import Command from '@downzoo/command'
+import { log } from '@downzoo/utils'
 
 class InitCommand extends Command {
 	get command() {
@@ -17,15 +18,15 @@ class InitCommand extends Command {
 	}
 
 	action([name, opts]) {
-		console.log('init', name, opts)
+		log.verbose('init', name, opts)
 	}
 
 	preAction() {
-		console.log("-> pre");
+		// console.log('-> pre')
 	}
 
 	postAction() {
-		console.log("-> post");
+		// console.log('-> post')
 	}
 }
 
@@ -33,4 +34,4 @@ function Init(instance) {
 	return new InitCommand(instance)
 }
 
-module.exports = Init
+export default Init
