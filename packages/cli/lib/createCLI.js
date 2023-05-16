@@ -11,7 +11,7 @@ const __dirname = dirname(import.meta)
 const pkgPath = path.resolve(__dirname, '../package.json')
 const pkg = fse.readJsonSync(pkgPath)
 
-const LOWEST_NODE_VERSION = '18.0.0'
+const LOWEST_NODE_VERSION = '14.0.0'
 
 function preAction() {
 	checkNodeVersion()
