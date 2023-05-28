@@ -5,7 +5,7 @@ import semver from 'semver'
 import fse from 'fs-extra'
 import chalk from 'chalk'
 
-import { log } from '@downzoo/utils'
+import { log, isDebug } from '@downzoo/utils'
 
 const __dirname = dirname(import.meta)
 const pkgPath = path.resolve(__dirname, '../package.json')
@@ -32,7 +32,7 @@ export default function createCLI() {
 	})
 
 	program.on('option:debug', () => {
-		if (program.opts().debug) {
+		if (isDebug()) {
 			log.verbose('debug', 'launch debug mode')
 		}
 	})
