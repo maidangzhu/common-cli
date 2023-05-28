@@ -2,12 +2,13 @@ import { log, makeInput, makeList } from '@downzoo/utils'
 
 const ADD_TYPE_PROJECT = 'project'
 const ADD_TYPE_COMPONENT = 'component'
-const ADD_TEMPLATE_LIST = [{
-	name: 'react项目模板',
-	value: 'react-template',
-	npmName: '@downzoo/react-template',
-	version: '1.0.0'
-},
+const ADD_TEMPLATE_LIST = [
+	{
+		name: 'react项目模板',
+		value: 'react-template',
+		npmName: '@downzoo/react-template',
+		version: '1.0.0'
+	},
 	{
 		name: 'vue项目模板',
 		value: 'vue-template',
@@ -53,11 +54,14 @@ function getAddTemplate() {
 
 export async function createTemplate(name, opts) {
 	const addType = await getAddType()
-	log.verbose('addType', addType)
+	log.verbose('addType', addType.name)
 
 	if (addType.name === ADD_TYPE_PROJECT) {
 		const addName = await getAddName()
-		log.verbose('addName', addName)
-
+		log.verbose('addName', addName.name)
+		const addTemplate = await getAddTemplate()
+		log.verbose('addTemplate', addTemplate.name)
+		const selectedTemplate = ADD_TEMPLATE_LIST.find(item => item.value === addTemplate.name)
+		log.verbose('selectedTemplate', selectedTemplate)
 	}
 }
