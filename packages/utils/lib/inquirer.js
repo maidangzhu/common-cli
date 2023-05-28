@@ -32,11 +32,17 @@ function make(
 
 	return inquirer.prompt(options)
 		.then(answer => {
-			console.log('-> answer.name', answer.name)
 			return answer
 		})
 }
 
 export function makeList(params) {
 	return make({ ...params })
+}
+
+export function makeInput(params) {
+	return make({
+		type: 'input',
+		...params
+	})
 }
