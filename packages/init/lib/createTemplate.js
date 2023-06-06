@@ -1,4 +1,6 @@
-import { log, makeInput, makeList } from '@downzoo/utils'
+import { homedir } from 'node:os'
+import path from 'node:path'
+import { log, makeInput, makeList, getLatestVersion } from '@downzoo/utils'
 
 const ADD_TYPE_PROJECT = 'project'
 const ADD_TYPE_COMPONENT = 'component'
@@ -23,6 +25,7 @@ const ADD_TYPE_LIST = [{
 	name: '组件',
 	value: ADD_TYPE_COMPONENT
 }]
+const TEMP_HOME = 'downzoo/cli-downzoo'
 
 // 获取创建类型
 function getAddType() {
@@ -52,6 +55,11 @@ function getAddTemplate() {
 	})
 }
 
+// 安装缓存目录
+function makeTargetPath() {
+	return path.resolve(`${homedir()}/${TEMP_HOME}`, 'addTemplate')
+}
+
 export async function createTemplate(name, opts) {
 	const addType = await getAddType()
 	log.verbose('addType', addType.name)
@@ -63,5 +71,21 @@ export async function createTemplate(name, opts) {
 		log.verbose('addTemplate', addTemplate.name)
 		const selectedTemplate = ADD_TEMPLATE_LIST.find(item => item.value === addTemplate.name)
 		log.verbose('selectedTemplate', selectedTemplate)
+		const latestVersion = await getLatestVersion(selectedTemplate.npmName)
+		log.verbose('latestVersion', latestVersion)
+
+		const selectedTemplateNew = {
+			...selectedTemplate,
+			version: latestVersion
+		}
+		const targetPath = makeTargetPath()
+		log.verbose('targetPath', targetPath)
+
+		return {
+			type: addType,
+			name: addName,
+			template: selectedTemplateNew,
+			targetPath
+		}
 	}
 }

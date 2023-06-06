@@ -1,6 +1,7 @@
 import Command from '@downzoo/command'
 import { log } from '@downzoo/utils'
 import { createTemplate } from './createTemplate.js'
+import downloadTemplate from './downloadTemplate.js'
 
 class InitCommand extends Command {
 	get command() {
@@ -18,12 +19,14 @@ class InitCommand extends Command {
 		]
 	}
 
-	action([name, opts]) {
+	async action([name, opts]) {
 		log.verbose('init', name, opts)
 
 		// 1. 选择项目模板，生成项目信息
-		createTemplate(name, opts)
+		const selectedTemplate = await createTemplate(name, opts)
+		log.verbose('template', selectedTemplate)
 		// 2. 下载项目模板至缓存目录
+		downloadTemplate(selectedTemplate.template)
 		// 3. 安装项目模板至项目目录
 	}
 
