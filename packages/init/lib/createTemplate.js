@@ -41,7 +41,13 @@ function getAddType() {
 function getAddName() {
 	return makeInput({
 		message: '请输入项目名称',
-		defaultValue: ''
+		defaultValue: '',
+		validate: value => {
+			if (value.length > 0) {
+				return true
+			}
+			return 'name must not be empty'
+		}
 	})
 }
 

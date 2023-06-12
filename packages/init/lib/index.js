@@ -26,8 +26,9 @@ class InitCommand extends Command {
 		const selectedTemplate = await createTemplate(name, opts)
 		log.verbose('template', selectedTemplate)
 		// 2. 下载项目模板至缓存目录
-		downloadTemplate(selectedTemplate.template)
+		downloadTemplate(selectedTemplate)
 		// 3. 安装项目模板至项目目录
+
 	}
 
 	preAction() {
