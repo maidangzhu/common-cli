@@ -66,7 +66,7 @@ function makeTargetPath() {
 	return path.resolve(`${homedir()}/${TEMP_HOME}`, 'addTemplate')
 }
 
-export async function createTemplate(name, opts) {
+async function createTemplate(name, opts) {
 	const addType = await getAddType()
 	log.verbose('addType', addType.name)
 
@@ -95,3 +95,5 @@ export async function createTemplate(name, opts) {
 		}
 	}
 }
+
+export default createTemplate
