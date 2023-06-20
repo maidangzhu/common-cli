@@ -89,7 +89,7 @@ async function createTemplate(name, opts) {
 
 		return {
 			type: addType,
-			name: addName,
+			name: addName.name,
 			template: selectedTemplateNew,
 			targetPath
 		}
