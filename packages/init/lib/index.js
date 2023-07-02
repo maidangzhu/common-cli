@@ -4,6 +4,11 @@ import createTemplate from './createTemplate.js'
 import downloadTemplate from './downloadTemplate.js'
 import installTemplate from './installTemplate.js'
 
+/**
+ * examples:
+ * common-cli init
+ * common-cli init hello -t project -tp react-template --force
+ */
 class InitCommand extends Command {
 	get command() {
 		return 'init [name]'
@@ -15,14 +20,16 @@ class InitCommand extends Command {
 
 	get options() {
 		return [
+			['-d, --debug', '是否开启调试模式', false],
 			['-f, --force', '是否强制更新', false],
-			['-v, --version', '版本号', '0.0.0']
+			['-v, --version', '版本号', '0.0.0'],
+			['-t, --type <type>', '项目类型'],
+			['-tp, --template <template>', '模板名称'],
 		]
 	}
 
 	async action([name, opts]) {
 		log.verbose('init', name, opts)
-
 		// 1. 选择项目模板，生成项目信息
 		const selectedTemplate = await createTemplate(name, opts)
 		log.verbose('template', selectedTemplate)

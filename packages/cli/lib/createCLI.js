@@ -26,6 +26,12 @@ function checkNodeVersion() {
 
 export default function createCLI() {
 	log.info('version', pkg.version)
+	program
+		.name(Object.keys(pkg.bin)[0])
+		.usage('<command> [options]')
+		.version(pkg.version)
+		.option('-d, --debug', '是否开启调试模式', false)
+		.hook('preAction', preAction)
 
 	program.on('command:*', (obj) => {
 		log.error('未知的命令：' + obj[0])
@@ -38,9 +44,4 @@ export default function createCLI() {
 	})
 
 	return program
-		.name(Object.keys(pkg.bin)[0])
-		.usage('<command> [options]')
-		.version(pkg.version)
-		.option('-d, --debug', '是否开启调试模式', false)
-		.hook('preAction', preAction)
 }

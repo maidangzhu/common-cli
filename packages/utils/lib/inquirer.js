@@ -32,7 +32,7 @@ function make(
 
 	return inquirer.prompt(options)
 		.then(answer => {
-			return answer
+			return answer.name
 		})
 }
 
@@ -45,4 +45,11 @@ export function makeInput(params) {
 		type: 'input',
 		...params
 	})
+}
+
+export function makePassword(params) {
+	return make({
+		type: 'password',
+		...params,
+	});
 }

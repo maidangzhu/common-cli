@@ -1,5 +1,5 @@
 import log from 'npmlog'
-import isDebug from './isDebug.js'
+import { isDebug } from './isDebug.js'
 
 if (isDebug()) {
 	log.level = 'verbose'

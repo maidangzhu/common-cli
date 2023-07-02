@@ -46,11 +46,11 @@ class Command {
 
 	preAction() {
 		// empty
-  }
+	}
 
 	postAction() {
 		// empty
-  }
+	}
 }
 
 
