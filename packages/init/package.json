@@ -1,6 +1,6 @@
 {
   "name": "@downzoo/init",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "init command",
   "author": "朱建业 <borisdunk@sina.com>",
   "homepage": "https://github.com/maidangzhu/common-cli#readme",
@@ -25,8 +25,8 @@
     "url": "https://github.com/maidangzhu/common-cli/issues"
   },
   "dependencies": {
-    "@downzoo/command": "^0.0.0",
-    "@downzoo/utils": "^0.0.0",
+    "@downzoo/command": "^0.0.1",
+    "@downzoo/utils": "^0.0.1",
     "dirname-filename-esm": "^1.1.1",
     "execa": "^7.1.1",
     "ora": "^6.3.1",
