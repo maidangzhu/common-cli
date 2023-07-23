@@ -25,6 +25,7 @@ export default function installTemplate(selectedTemplate, opts) {
 	const rootDir = process.cwd()
 	fse.ensureDirSync(targetPath)
 	const installDir = path.resolve(`${rootDir}/${name}`)
+	log.verbose('installDir', installDir)
 
 	if (pathExistsSync(installDir)) {
 		if (!force) {

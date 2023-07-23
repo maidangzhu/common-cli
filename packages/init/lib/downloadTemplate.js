@@ -32,7 +32,7 @@ const downloadAppTemplate = async (targetPath, selectedTemplate) => {
 const downloadTemplate = async (selectedTemplate) => {
 	const { targetPath, template } = selectedTemplate
 	makeCacheDir(targetPath)
-	const spinner = ora(`Downloading...`).start()
+	const spinner = ora(`Downloading...\n`).start()
 
 	try {
 		await downloadAppTemplate(targetPath, template)
