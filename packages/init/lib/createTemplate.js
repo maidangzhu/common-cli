@@ -11,13 +11,6 @@ const DEFAULT_TEMPLATE_LIST = [
 		npmName: '@downzoo/react-template',
 		version: '1.0.0',
 		team: 'pc'
-	},
-	{
-		name: 'vue项目模板',
-		value: 'vue-template',
-		npmName: '@downzoo/vue-template',
-		version: '1.0.0',
-		team: 'pc'
 	}
 ]
 const ADD_TYPE_LIST = [{

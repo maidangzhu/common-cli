@@ -5,11 +5,12 @@ import ora from 'ora'
 import { log } from '@downzoo/utils'
 
 function getCacheFilePath(targetPath, template) {
-	return path.resolve(targetPath, 'node_modules', template.npmName)
+	return path.resolve(targetPath, 'node_modules', `${template.npmName}/templates/${template.value}`)
 }
 
 function copyFile(targetPath, template, installDir) {
 	const originFile = getCacheFilePath(targetPath, template)
+	log.verbose('originFile', originFile)
 	const fileList = fse.readdirSync(originFile)
 	const spinner = ora(`正在拷贝模板文件 ${template.npmName}...`).start()
 	fileList.map((file) => {
