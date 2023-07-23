@@ -2,6 +2,7 @@ import log from './log.js'
 import { isDebug, printErrorLog } from './isDebug.js'
 import { makeList, makeInput, makePassword } from './inquirer.js'
 import { getLatestVersion } from './npm.js'
+import request from './request.js'
 
 export {
 	log,
@@ -10,5 +11,6 @@ export {
 	makeInput,
 	makePassword,
 	printErrorLog,
-	getLatestVersion
+	getLatestVersion,
+	request
 }

@@ -1,21 +1,23 @@
 import { homedir } from 'node:os'
 import path from 'node:path'
-import { log, makeInput, makeList, getLatestVersion } from '@downzoo/utils'
+import { log, makeInput, makeList, getLatestVersion, request, printErrorLog } from '@downzoo/utils'
 
 const ADD_TYPE_PROJECT = 'project'
 const ADD_TYPE_PAGE = 'component'
-const ADD_TEMPLATE_LIST = [
+const DEFAULT_TEMPLATE_LIST = [
 	{
 		name: 'react项目模板',
 		value: 'react-template',
 		npmName: '@downzoo/react-template',
-		version: '1.0.0'
+		version: '1.0.0',
+		team: 'pc'
 	},
 	{
 		name: 'vue项目模板',
 		value: 'vue-template',
 		npmName: '@downzoo/vue-template',
-		version: '1.0.0'
+		version: '1.0.0',
+		team: 'pc'
 	}
 ]
 const ADD_TYPE_LIST = [{
@@ -52,12 +54,21 @@ function getAddName() {
 }
 
 // 获取项目模板
-function getAddTemplate() {
+function getAddTemplate(list) {
 	return makeList({
 		title: '项目模板',
 		message: '请选择项目模板',
 		defaultValue: '@downzoo/react-template',
-		choices: ADD_TEMPLATE_LIST
+		choices: list || DEFAULT_TEMPLATE_LIST
+	})
+}
+
+function getAddTeam(list) {
+	return makeList({
+		title: '项目团队',
+		message: '请选择项目团队',
+		defaultValue: 'pc',
+		choices: list.map((each) => ({ name: each, value: each }) || ['pc', 'web'])
 	})
 }
 
@@ -66,7 +77,27 @@ function makeTargetPath() {
 	return path.resolve(`${homedir()}/${TEMP_HOME}`, 'addTemplate')
 }
 
+async function getTemplates() {
+	try {
+
+		const data = await request({
+			url: '/api/v1/project',
+			method: 'get'
+		})
+
+		log.verbose('template', data)
+		return data
+	} catch (e) {
+		printErrorLog(e)
+		return null
+	}
+}
+
 async function createTemplate(name, opts) {
+	const ADD_TEMPLATE_LIST = await getTemplates()
+	if (!ADD_TEMPLATE_LIST) {
+		throw new Error('获取模板列表失败！')
+	}
 	let addType // 创建项目类型
 	let addName // 项目名称
 	let selectedTemplate // 项目模板
@@ -74,9 +105,9 @@ async function createTemplate(name, opts) {
 	const { template = null, type = null } = opts
 
 	if (type) {
-		addType = type;
+		addType = type
 	} else {
-		addType = await getAddType();
+		addType = await getAddType()
 	}
 	log.verbose('addType', addType)
 
@@ -88,12 +119,16 @@ async function createTemplate(name, opts) {
 		}
 		log.verbose('addName', addName)
 		if (template) {
-			selectedTemplate = ADD_TEMPLATE_LIST.find(tp => tp.value === template);
+			selectedTemplate = ADD_TEMPLATE_LIST.find(tp => tp.value === template)
 			if (!selectedTemplate) {
-				throw new Error(`项目模板 ${template} 不存在！`);
+				throw new Error(`项目模板 ${template} 不存在！`)
 			}
 		} else {
-			const addTemplate = await getAddTemplate()
+			const teamList = [...new Set(ADD_TEMPLATE_LIST.map(tp => tp.team))]
+			const addTeam = await getAddTeam(teamList)
+			log.verbose('addTeam', addTeam)
+
+			const addTemplate = await getAddTemplate(ADD_TEMPLATE_LIST)
 			selectedTemplate = ADD_TEMPLATE_LIST.find(tp => tp.value === addTemplate)
 			log.verbose('addTemplate', selectedTemplate)
 		}
