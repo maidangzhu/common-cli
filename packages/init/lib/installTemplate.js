@@ -2,6 +2,8 @@ import fse from 'fs-extra'
 import path from 'node:path'
 import { pathExistsSync } from 'path-exists'
 import ora from 'ora'
+import ejs from 'ejs'
+import { glob } from 'glob'
 import { log } from '@downzoo/utils'
 
 function getCacheFilePath(targetPath, template) {
@@ -18,6 +20,40 @@ function copyFile(targetPath, template, installDir) {
 	})
 	spinner.stop()
 	log.success(`拷贝模板文件 ${template.npmName} 成功`)
+}
+
+function ejsRender(installDir, template) {
+	glob('**', {
+		cwd: installDir,
+		nodir: true,
+		ignore: [
+			'**/publish/**',
+			'**/node_modules/**',
+		]
+	})
+		.then((files) => {
+			const ejsData = {
+				data: {
+					name: template?.value ?? 'template'
+				}
+			}
+			log.verbose('ejsData', ejsData)
+
+			files.forEach((file) => {
+				const filePath = path.join(installDir, file)
+				log.verbose('filePath', filePath)
+				ejs.renderFile(filePath, ejsData, (err, result) => {
+					if (err) {
+						log.error(err)
+					} else {
+						fse.writeFileSync(filePath, result)
+					}
+				})
+			})
+		})
+		.catch((e) => {
+			log.error(e)
+		})
 }
 
 export default function installTemplate(selectedTemplate, opts) {
@@ -42,5 +78,6 @@ export default function installTemplate(selectedTemplate, opts) {
 	}
 
 	copyFile(targetPath, template, installDir)
+	ejsRender(installDir, template)
 }
 
