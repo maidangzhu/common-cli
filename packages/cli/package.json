@@ -1,6 +1,6 @@
 {
   "name": "@downzoo/common-cli",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "common Node.js cli",
   "author": "朱建业 <borisdunk@sina.com>",
   "homepage": "https://github.com/maidangzhu/common-cli#readme",
@@ -29,8 +29,8 @@
     "url": "https://github.com/maidangzhu/common-cli/issues"
   },
   "dependencies": {
-    "@downzoo/init": "^0.0.3",
-    "@downzoo/utils": "^0.0.3",
+    "@downzoo/init": "^0.0.5",
+    "@downzoo/utils": "^0.0.5",
     "chalk": "^5.2.0",
     "commander": "^9.4.1",
     "dirname-filename-esm": "^1.1.1",
