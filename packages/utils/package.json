@@ -1,6 +1,6 @@
 {
   "name": "@downzoo/utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "common-cli utils",
   "author": "朱建业 <borisdunk@sina.com>",
   "homepage": "https://github.com/maidangzhu/common-cli#readme",
@@ -17,8 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/maidangzhu/common-cli.git"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "bugs": {
     "url": "https://github.com/maidangzhu/common-cli/issues"
   },
