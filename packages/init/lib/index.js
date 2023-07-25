@@ -20,9 +20,7 @@ class InitCommand extends Command {
 
 	get options() {
 		return [
-			['-d, --debug', '是否开启调试模式', false],
 			['-f, --force', '是否强制更新', false],
-			['-v, --version', '版本号', '0.0.0'],
 			['-t, --type <type>', '项目类型'],
 			['-tp, --template <template>', '模板名称'],
 		]

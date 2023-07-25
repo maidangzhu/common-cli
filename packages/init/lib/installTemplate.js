@@ -1,5 +1,5 @@
 import path from 'node:path'
-import { log } from '@downzoo/utils'
+import { log, makeList, makeInput } from '@downzoo/utils'
 import fse from 'fs-extra'
 import { pathExistsSync } from 'path-exists'
 import ora from 'ora'
@@ -8,7 +8,11 @@ import { glob } from 'glob'
 import { execa } from 'execa'
 
 function getCacheFilePath(targetPath, template) {
-	return path.resolve(targetPath, 'node_modules', `${template.npmName}/templates/${template.value}`)
+	return path.resolve(targetPath, 'node_modules', `${template.npmName}/template`)
+}
+
+function getPluginFilePath(targetPath, template) {
+	return path.resolve(targetPath, 'node_modules', `${template.npmName}/plugins/index.js`)
 }
 
 function copyFile(targetPath, template, installDir) {
@@ -23,11 +27,26 @@ function copyFile(targetPath, template, installDir) {
 	log.success(`拷贝模板文件 ${template.npmName} 成功`)
 }
 
-function ejsRender(installDir, template, name) {
+async function ejsRender(targetPath, installDir, template, name) {
+	log.verbose('ejsRender', installDir, template)
 	const { ignore } = template
+	// 执行插件
+	let pluginData = {}
+	const pluginPath = getPluginFilePath(targetPath, template)
+	if (pathExistsSync(pluginPath)) {
+		const pluginFn = (await import (pluginPath)).default
+		const api = {
+			makeList,
+			makeInput
+		}
+		pluginData = await pluginFn(api)
+	}
+	log.verbose('pluginData', pluginData)
+	log.verbose('pluginPath', pluginPath)
 	const ejsData = {
 		data: {
-			name
+			name,
+			...pluginData
 		}
 	}
 
@@ -80,9 +99,9 @@ export default async function installTemplate(selectedTemplate, opts) {
 	}
 
 	copyFile(targetPath, template, installDir)
-	ejsRender(installDir, template, name)
+	await ejsRender(targetPath, installDir, template, name)
 	const gitCommandRes = await execa(gitCommand, gitArgs, { cwd: installDir })
-	const { stdout} = gitCommandRes
+	const { stdout } = gitCommandRes
 	log.verbose('gitInit', stdout)
 }
 
