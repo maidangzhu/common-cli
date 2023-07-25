@@ -1,6 +1,5 @@
 {
   "name": "downzoo",
-  "private": false,
   "workspaces": [
     "packages/*"
   ],
