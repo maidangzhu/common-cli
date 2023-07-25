@@ -1,0 +1,6 @@
+59 error Error: Command failed with exit code 128: git tag v0.0.3 -m v0.0.3
+59 error fatal: tag 'v0.0.3' already exists
+59 error     at makeError (/Users/zhujianye/downzoo/common-cli/node_modules/execa/lib/error.js:60:11)
+59 error     at handlePromise (/Users/zhujianye/downzoo/common-cli/node_modules/execa/index.js:118:26)
+59 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+59 error     at async Promise.all (index 0)
