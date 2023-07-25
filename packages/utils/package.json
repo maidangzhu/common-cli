@@ -27,5 +27,6 @@
     "inquirer": "^9.2.3",
     "npmlog": "^7.0.1",
     "url-join": "^5.0.0"
-  }
+  },
+  "gitHead": "0c61fb350f0934d51b387edb6c85ca503ee76456"
 }

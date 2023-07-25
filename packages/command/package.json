@@ -26,5 +26,6 @@
   },
   "dependencies": {
     "dirname-filename-esm": "^1.1.1"
-  }
+  },
+  "gitHead": "0c61fb350f0934d51b387edb6c85ca503ee76456"
 }
