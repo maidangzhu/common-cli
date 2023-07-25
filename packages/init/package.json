@@ -1,6 +1,6 @@
 {
   "name": "@downzoo/init",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "init command",
   "author": "朱建业 <borisdunk@sina.com>",
   "homepage": "https://github.com/maidangzhu/common-cli#readme",
@@ -28,8 +28,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@downzoo/command": "^0.0.7",
-    "@downzoo/utils": "^0.0.7",
+    "@downzoo/command": "^0.0.8",
+    "@downzoo/utils": "^0.0.8",
     "dirname-filename-esm": "^1.1.1",
     "ejs": "^3.1.9",
     "execa": "^7.1.1",
