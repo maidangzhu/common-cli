@@ -21,6 +21,9 @@
   "bugs": {
     "url": "https://github.com/maidangzhu/common-cli/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "axios": "^1.4.0",
     "dirname-filename-esm": "^1.1.1",
@@ -28,5 +31,5 @@
     "npmlog": "^7.0.1",
     "url-join": "^5.0.0"
   },
-  "gitHead": "64412e82f87264420f4086a7f726b2a954260b64"
+  "gitHead": "b6e56ffbc07716333a17701d788d318aecd9f75a"
 }

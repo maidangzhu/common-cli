@@ -24,6 +24,9 @@
   "bugs": {
     "url": "https://github.com/maidangzhu/common-cli/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@downzoo/command": "^0.0.6",
     "@downzoo/utils": "^0.0.6",
@@ -34,5 +37,5 @@
     "ora": "^6.3.1",
     "path-exists": "^5.0.0"
   },
-  "gitHead": "64412e82f87264420f4086a7f726b2a954260b64"
+  "gitHead": "b6e56ffbc07716333a17701d788d318aecd9f75a"
 }
