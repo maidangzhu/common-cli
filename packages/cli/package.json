@@ -1,5 +1,5 @@
 {
-  "name": "@downzoo/common-cli",
+  "name": "@downzoo/cli",
   "version": "0.0.7",
   "description": "common Node.js cli",
   "author": "朱建业 <borisdunk@sina.com>",
@@ -8,7 +8,7 @@
   "main": "bin/cli.js",
   "type": "module",
   "bin": {
-    "common-cli": "bin/cli.js"
+    "common": "bin/cli.js"
   },
   "directories": {
     "lib": "lib",
