@@ -20,7 +20,7 @@ const ADD_TYPE_LIST = [{
 	name: '页面',
 	value: ADD_TYPE_PAGE
 }]
-const TEMP_HOME = 'downzoo/cli-downzoo'
+const TEMP_HOME = '.common-cli'
 
 // 获取创建类型
 function getAddType() {
