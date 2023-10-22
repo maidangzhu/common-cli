@@ -5,7 +5,8 @@ import { getLatestVersion } from './npm.js'
 import request from './request.js'
 import Github from './git/github.js'
 import Gitee from './git/gitee.js'
-import { getGitPlatform } from './git/GitServer.js'
+import { getGitPlatform, clearCache } from './git/GitServer.js'
+import { initGitServer, initGitType, createRemoteRepo } from './git/GitUtils.js'
 
 export {
 	log,
@@ -18,5 +19,9 @@ export {
 	request,
 	Gitee,
 	Github,
-	getGitPlatform
+	getGitPlatform,
+	clearCache,
+	initGitServer,
+	initGitType,
+	createRemoteRepo
 }

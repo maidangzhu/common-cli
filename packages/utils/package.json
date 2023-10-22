@@ -31,7 +31,8 @@
     "inquirer": "^9.2.3",
     "npmlog": "^7.0.1",
     "path-exists": "^5.0.0",
-    "url-join": "^5.0.0"
+    "url-join": "^5.0.0",
+    "execa": "^7.1.1"
   },
   "gitHead": "b6e56ffbc07716333a17701d788d318aecd9f75a"
 }
