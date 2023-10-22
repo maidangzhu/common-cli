@@ -28,7 +28,7 @@ class InstallCommand extends Command {
 	async action() {
 		await this.generateGitAPI()
 		await this.searchGitAPI()
-		// await this.selectTags()
+		await this.selectTags()
 		log.verbose('full_name', this.keyword)
 		log.verbose('selected_tag', this.selectedTag)
 		// await this.downloadRepo()
@@ -158,21 +158,21 @@ class InstallCommand extends Command {
 			}))
 		}
 
-		// 判断当前页面，已经是否到达最大页数
-		if ((platform === 'github' && this.page * this.perPage < count) || list.length > 0) {
-			list.push({
-				name: '下一页',
-				value: NEXT_PAGE
-			})
-		}
-		if (this.page > 1) {
-			list.unshift({
-				name: '上一页',
-				value: PREV_PAGE
-			})
-		}
-
 		if (count > 0) {
+			// 判断当前页面，已经是否到达最大页数
+			if ((platform === 'github' && this.page * this.perPage < count) || list.length > 0) {
+				list.push({
+					name: '下一页',
+					value: NEXT_PAGE
+				})
+			}
+			if (this.page > 1) {
+				list.unshift({
+					name: '上一页',
+					value: PREV_PAGE
+				})
+			}
+
 			const keyword = await makeList({
 				message: platform === 'github' ? `请选择要下载的项目（共${count}条数据）` : '请选择要下载的项目',
 				choices: list
@@ -200,6 +200,8 @@ class InstallCommand extends Command {
 	}
 
 	async selectTags() {
+		if (!this.keyword) return
+
 		let tagsList
 		this.tagPage = 1
 		this.tagPerPage = 30
