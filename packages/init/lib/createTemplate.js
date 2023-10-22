@@ -1,5 +1,6 @@
 import { homedir } from 'node:os'
 import path from 'node:path'
+import fse from 'fs-extra'
 import { log, makeInput, makeList, getLatestVersion, request, printErrorLog } from '@downzoo/utils'
 
 const ADD_TYPE_PROJECT = 'project'
@@ -67,6 +68,7 @@ function getAddTeam(list) {
 
 // 安装缓存目录
 function makeTargetPath() {
+	fse.ensureDirSync(path.resolve(homedir(), TEMP_HOME))
 	return path.resolve(`${homedir()}/${TEMP_HOME}`, 'addTemplate')
 }
 

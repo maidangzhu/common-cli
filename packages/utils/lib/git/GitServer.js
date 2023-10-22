@@ -18,6 +18,9 @@ function createTokenPath() {
 }
 
 function createPlatformPath() {
+	const tempPlatformPath = path.resolve(homedir(), TEMP_HOME)
+	console.log("=>(GitServer.js:22) tempPlatformPath", tempPlatformPath);
+	fse.ensureDirSync(tempPlatformPath)
 	return path.resolve(homedir(), TEMP_HOME, TEMP_PLATFORM)
 }
 
@@ -30,7 +33,10 @@ function createLoginPath() {
 }
 
 function getGitPlatform() {
+
+	console.log("=>(GitServer.js:36) createPlatformPath", createPlatformPath());
 	if (pathExistsSync(createPlatformPath())) {
+		console.log('exist')
 		return fs.readFileSync(createPlatformPath()).toString()
 	}
 	return null

@@ -28,12 +28,12 @@ class InstallCommand extends Command {
 	async action() {
 		await this.generateGitAPI()
 		await this.searchGitAPI()
-		await this.selectTags()
+		// await this.selectTags()
 		log.verbose('full_name', this.keyword)
 		log.verbose('selected_tag', this.selectedTag)
-		await this.downloadRepo()
-		await this.installDependencies()
-		await this.runRepo()
+		// await this.downloadRepo()
+		// await this.installDependencies()
+		// await this.runRepo()
 	}
 
 	async runRepo() {
@@ -86,6 +86,7 @@ class InstallCommand extends Command {
 		} else {
 			this.mode = SEARCH_MODE_REPO
 		}
+		log.verbose('mode', this.mode)
 		this.q = await makeInput({
 			message: '请输入搜索关键词',
 			validate(value) {
@@ -110,6 +111,7 @@ class InstallCommand extends Command {
 		let searchResult
 		let count = 0
 		let list = []
+		// github
 		if (platform === 'github') {
 			// 2. 生成搜索参数
 			const params = {
@@ -117,10 +119,9 @@ class InstallCommand extends Command {
 				order: 'desc',
 				sort: 'stars',
 				per_page: this.perPage,
-				page: this.page
-			}
+				page: this.page,
+			};
 			log.verbose('search params', params)
-			// github
 			if (this.mode === SEARCH_MODE_REPO) {
 				searchResult = await this.gitAPI.searchRepositories(params)
 				list = searchResult.items.map(item => ({
@@ -135,6 +136,7 @@ class InstallCommand extends Command {
 				}))
 			}
 			count = searchResult.total_count // 整体数据量
+			log.verbose('search count', count)
 		} else {
 			// gitee
 			const params = {

@@ -9,7 +9,7 @@ class Github extends GitServer {
 		super();
 		this.service = axios.create({
 			baseURL: BASE_URL,
-			timeout: 5000,
+			timeout: 15000,
 		});
 		this.service.interceptors.request.use(
 			config => {
