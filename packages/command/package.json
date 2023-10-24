@@ -1,6 +1,6 @@
 {
   "name": "@downzoo/command",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "command class",
   "author": "朱建业 <borisdunk@sina.com>",
   "homepage": "https://github.com/maidangzhu/common-cli#readme",
