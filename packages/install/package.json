@@ -21,7 +21,11 @@
   "bugs": {
     "url": "https://github.com/maidangzhu/common-cli/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@downzoo/utils": "^0.0.11"
-  }
+  },
+  "gitHead": "3503bb870062ff2f47cde71d976b70d5db97faa9"
 }
