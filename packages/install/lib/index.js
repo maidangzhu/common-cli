@@ -31,9 +31,9 @@ class InstallCommand extends Command {
 		await this.selectTags()
 		log.verbose('full_name', this.keyword)
 		log.verbose('selected_tag', this.selectedTag)
-		// await this.downloadRepo()
-		// await this.installDependencies()
-		// await this.runRepo()
+		await this.downloadRepo()
+		await this.installDependencies()
+		await this.runRepo()
 	}
 
 	async runRepo() {
