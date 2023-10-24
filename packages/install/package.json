@@ -1,6 +1,6 @@
 {
   "name": "@downzoo/install",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "cli installer",
   "author": "朱建业 <borisdunk@sina.com>",
   "homepage": "https://github.com/maidangzhu/common-cli#readme",
@@ -22,6 +22,6 @@
     "url": "https://github.com/maidangzhu/common-cli/issues"
   },
   "dependencies": {
-    "@downzoo/utils": "^0.0.9"
+    "@downzoo/utils": "^0.0.10"
   }
 }
