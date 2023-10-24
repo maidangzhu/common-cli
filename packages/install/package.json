@@ -1,5 +1,5 @@
 {
-  "name": "@downzoo/install",
+  "name": "@downzoo/installer",
   "version": "0.0.12",
   "description": "cli installer",
   "author": "朱建业 <borisdunk@sina.com>",
