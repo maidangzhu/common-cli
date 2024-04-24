@@ -6,8 +6,8 @@ import installTemplate from './installTemplate.js'
 
 /**
  * examples:
- * common-cli init
- * common-cli init hello -t project -tp react-template --force
+ * common init
+ * common init hello -t project -tp react-template --force
  */
 class InitCommand extends Command {
 	get command() {
@@ -33,7 +33,7 @@ class InitCommand extends Command {
 		log.verbose('template', selectedTemplate)
 		// 2. 下载项目模板至缓存目录
 		await downloadTemplate(selectedTemplate)
-		// 3. 安装项目模板至项目目录
+		// 3. 安装项目目目录
 		await installTemplate(selectedTemplate, opts)
 	}
 
